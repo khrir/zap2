@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  list-style: none;
+}
+
+img{
+  height: 50px;
+  width: 50x;
+  margin-left: 10px;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(20, 19, 19);
+  min-height: 100vh;
+}
+
+a{
+  text-decoration: none;
+  color: red;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background: #1d1e20;
+  align-items: center;
+  padding: 10px;
+}
+
+.menu{
+  display: flex;
+}
+
+.menu li{
+  margin-left: 10px;
+}
+
+.menu li a{
+  display: block;
+  padding: 10px;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 500px;
+  margin: 32px auto;
+  padding: 32px 64px;
+}
+
+form h2{
+  margin-bottom: 32px;
+  text-align: center;
+  color: whitesmoke;
+}
+
+div.input{
+  margin-bottom: 32px;
+  position: relative;
+}
+
+input, button{
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  width: 100%;
+  padding: 16px 0;
+  border: none;
+  border-bottom: 1px solid grey;
+  color: whitesmoke;
+  outline: none;
+}
+
+input ~ label{
+  position: absolute;
+  margin-top: 16px;
+  left: 0;
+  color: rgba(255, 255, 255, 0.6);
+  transition: 0.4s;
+}
+
+input:focus ~ label, input:valid ~ label {
+  transform: translateY(-24px);
+  font-size: 0.8em;
+  letter-spacing: 0.1em;
+}
+
+input:focus{
+  border-color: red !important;
+}
+
+input:valid{
+  border-color: green;
+}
+
+button{
+  margin-top: 16px;
+  background: rgb(104, 102, 104);
+  cursor: pointer;
+  border-radius: 30px;
+  border: none;
+}

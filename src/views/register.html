@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style/style.css" />
+        <title>Sign up</title>
+    </head>
+    <body>
+        <form action="/register" id="form" method="post">
+            <h2>Cadastro</h2>
+
+            <div class="input">
+                <input type="text" required maxlength="50" name="nome">
+                <label>Nome</label>
+            </div><!--Nome-->
+    
+            <div class="input">
+                <input type="email" required maxlength="50" name="email">
+                <label for="">E-mail</label>
+            </div><!--Email-->
+    
+            <div class="input">
+                <input type="password" class="Senha" required minlength="8" name="senha">
+                <label for="Senha">Senha</label>
+            </div><!--Senha-->
+            
+            <button type="submit" id="btn">Enviar</button>
+        </form>
+    </body>
+</html>

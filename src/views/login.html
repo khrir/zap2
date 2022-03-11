@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style/style.css" />
+        <title>Login</title>
+    </head>
+    <body>
+        <form id="form" method="post">
+            <h2>Login</h2>
+    
+            <div class="input">
+                <input type="email" required maxlength="50" name="email">
+                <label for="">E-mail</label>
+            </div><!--Email-->
+    
+            <div class="input">
+                <input type="password" class="Senha" required minlength="8" name="senha">
+                <label for="Senha">Senha</label>
+            </div><!--Senha-->
+            
+            <button type="submit" onclick="entrar(event)" id="btn">Entrar</button>
+
+        </form>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script>
+            function entrar(e) {
+                e.preventDefault();
+                window.location.assign('http://127.0.0.1:3001/chat');
+            }
+        </script>
+    </body>
+</html>
