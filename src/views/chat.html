@@ -8,6 +8,12 @@
     <title>Chat</title>
 </head>
 <body>
+    <div id='acesso_usuario'>
+        <form id="login">
+            <input type='text' placeholder='Insira seu apelido' name='apelido' id='apelido' />
+            <input type='submit' value='Entrar' />
+        </form>
+   </div>
     <div id='sala_chat'>
         <div id="historico_mensagens"></div>
         <select multiple="multiple" id='lista_usuarios'><option value=''>Todos</option></select>
@@ -18,6 +24,6 @@
    </div>
    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js" integrity="sha512-MgkNs0gNdrnOM7k+0L+wgiRc5aLgl74sJQKbIWegVIMvVGPc1+gc1L2oK9Wf/D9pq58eqIJAxOonYPVE5UwUFA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="../websocket/client.js"></script>
+   <script src="./client.js"></script>
 </body>
 </html>
