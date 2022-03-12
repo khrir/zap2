@@ -33,7 +33,7 @@ app.use(
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 let usuarios = [];
-let ultimas_mensagens = []; 
+let history = []; 
 
 server.listen(port, () => {
     console.log(`Server rodando: http://127.0.0.1:${port}`);
@@ -45,16 +45,16 @@ io.on("connection", function(socket){
         socket.broadcast.emit("sendNotification", details)
     });
 
-	socket.on("entrar", function(apelido, callback){
-		if(!(apelido in usuarios)){
-			socket.apelido = apelido;
-			usuarios[apelido] = socket; 
+	socket.on("entrar", function(nickname, callback){
+		if(!(nickname in usuarios)){
+			socket.nickname = nickname;
+			usuarios[nickname] = socket; 
 
-			for(indice in ultimas_mensagens){
-				socket.emit("atualizar mensagens", ultimas_mensagens[indice]);
+			for(i in history){
+				socket.emit("atualizar mensagens", history[i]);
 			}
 
-			let mensagem = "[ " + pegarDataAtual() + " ] " + apelido + " acabou de entrar na sala";
+			let mensagem = "[ " + pegarDataAtual() + " ] " + nickname + " acabou de entrar na sala";
 			let obj_mensagem = {msg: mensagem, tipo: 'sistema'};
 
 			io.sockets.emit("atualizar usuarios", Object.keys(usuarios)); 
@@ -68,15 +68,13 @@ io.on("connection", function(socket){
 		}
 	});
 
-
 	socket.on("enviar mensagem", function(dados, callback){
-
 		let mensagem_enviada = dados.msg;
 		let usuario = dados.usu;
 		if(usuario == null)
 			usuario = '';
 
-		mensagem_enviada = "[ " + pegarDataAtual() + " ] " + socket.apelido + " diz: " + mensagem_enviada;
+		mensagem_enviada = "[ " + pegarDataAtual() + " ] " + socket.nickname + " diz: " + mensagem_enviada;
 		let obj_mensagem = {msg: mensagem_enviada, tipo: ''};
 
 		if(usuario == ''){
@@ -92,8 +90,8 @@ io.on("connection", function(socket){
 	});
 
 	socket.on("disconnect", function(){
-		delete usuarios[socket.apelido];
-		let mensagem = "[ " + pegarDataAtual() + " ] " + socket.apelido + " saiu da sala";
+		delete usuarios[socket.nickname];
+		let mensagem = "[ " + pegarDataAtual() + " ] " + socket.nickname + " saiu da sala";
 		let obj_mensagem = {msg: mensagem, tipo: 'sistema'};
 	
 		io.sockets.emit("atualizar usuarios", Object.keys(usuarios));
@@ -116,8 +114,8 @@ function pegarDataAtual(){
 }
 
 function armazenaMensagem(mensagem){
-	if(ultimas_mensagens.length > 5){
-		ultimas_mensagens.shift();
+	if(history.length > 5){
+		history.shift();
 	}
-	ultimas_mensagens.push(mensagem);
+	history.push(mensagem);
 }

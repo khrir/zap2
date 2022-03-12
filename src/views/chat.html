@@ -8,17 +8,17 @@
     <title>Chat</title>
 </head>
 <body>
-    <div id='acesso_usuario'>
+    <div id='user'>
         <form id="login">
-            <input type='text' placeholder='Insira seu apelido' name='apelido' id='apelido' />
+            <input type='text' placeholder='Insira seu apelido' name='nickname' id='nickname' />
             <input type='submit' value='Entrar' />
         </form>
    </div>
-    <div id='sala_chat'>
-        <div id="historico_mensagens"></div>
-        <select multiple="multiple" id='lista_usuarios'><option value=''>Todos</option></select>
+    <div id='room'>
+        <div id="historico"></div>
+        <select multiple="multiple" id='lista'><option value=''>Todos</option></select>
         <form id="chat">
-            <input type='text' id='texto_mensagem' name='texto_mensagem' />
+            <input type='text' id='mensagem' name='mensagem' />
             <input type='submit' value='Enviar mensagem!' />
         </form>
    </div>

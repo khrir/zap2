@@ -2,23 +2,30 @@ html, body{
 	font-family: Arial, Tahoma, sans-serif;
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 body{
 	background:#302F31;
 	padding:10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
 }
 
 form{
 	margin:15px 0;
 }
+
 form input[type='text']{
-	border:2px solid #45C5BF;
+	border:2px solid #e90303;
 	border-radius: 5px;
 	padding:5px;
 	width:75%;
 }
+
 form input[type='submit']{
-	background: #45C5BF;
+	background: #e90303;
 	border:none;
 	border-radius: 5px;
 	color:#FFF;
@@ -27,34 +34,43 @@ form input[type='submit']{
 	padding:7px 5px;
 	width:19%;
 }
-#historico_mensagens, #lista_usuarios{
+
+#login{
+	width: 400px;
+}
+
+#historico, #lista{
 	background: #FFF;
-	border:2px solid #45C5BF;
+	border:2px solid #e90303;
 	height: 550px;
 	float:left;
 	margin-bottom: 10px;
 	width:75%;
 }
-#sala_chat{
+#room{
 	display: none;
+	width: 80%;
 }
 
-#historico_mensagens{
+#historico{
 	border-right: 0;
+	overflow-y: auto;
 }
-#lista_usuarios{
-border-left: 1px solid #45C5BF;
+
+#lista{
+	border-left: 1px solid #e90303;
 	height: 554px;
 	width: 20%;
 }
 
-#historico_mensagens .sistema{
-	background-color: #45C5BF;
+#historico .sistema{
+	background-color: #e90303;
+	padding: 8px 5px;
 	color: #FFF;
 	font-weight: bold;
 }
 
-#historico_mensagens .privada{
+#historico .privada{
 	background-color: #CCC;
 	color: #000;
 	font-weight: bold;
