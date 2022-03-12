@@ -8,25 +8,51 @@
         <title>Sign up</title>
     </head>
     <body>
-        <form action="/register" id="form" method="post">
+        <form id="form" method="post">
             <h2>Cadastro</h2>
 
             <div class="input">
-                <input type="text" required maxlength="50" name="nome">
+                <input type="text" id="Nome" required maxlength="50" name="nome">
                 <label>Nome</label>
             </div><!--Nome-->
     
             <div class="input">
-                <input type="email" required maxlength="50" name="email">
+                <input type="email" id="Email" required maxlength="50" name="email">
                 <label for="">E-mail</label>
             </div><!--Email-->
     
             <div class="input">
-                <input type="password" class="Senha" required minlength="8" name="senha">
+                <input type="password" id="Senha" class="Senha" required minlength="8" name="senha">
                 <label for="Senha">Senha</label>
             </div><!--Senha-->
             
-            <button type="submit" id="btn">Enviar</button>
+            <button type="submit" onclick="cadastrar(event)" id="btn">Enviar</button>
         </form>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+            function cadastrar (e) {
+                e.preventDefault();
+                
+                let name = document.getElementById('Nome').value;
+                let login = document.getElementById('Email').value;
+                let password = document.getElementById('Senha').value;
+
+                let pessoa = {nome: name, email: login, senha: password}
+                console.log(pessoa)
+
+                axios.post('http://127.0.0.1:3001/register', pessoa)
+                    .then(function (response) {
+                        console.log(response.data);
+                        if(response.data.status === 201){
+                            // alert('Jae');
+                            window.location.assign('/login');
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                        alert('Ih, sujou');
+                    })
+            }
+        </script>
     </body>
 </html>

@@ -19,7 +19,7 @@ module.exports = {
         const {nome, email, senha} = request.body;
 
         if(!nome || !email || !senha) {
-            return response.status(400).json({error: "Missing name, email or password"});
+            return response.status(400).json({error: "Missing name, email or password", status: 400});
         }
         const user = new User({
             nome,
@@ -29,10 +29,10 @@ module.exports = {
 
         try{
             if(await User.findOne({ email })){
-                return response.status(400).json("User already exists.");
+                return response.status(400).json({error: "User already exists.", status: 400});
             }
             await user.save();
-            return response.status(201).json({ message: "User added"});
+            return response.status(201).json({message: "Tá salvo, chefia.", status: 201});
         }catch (err){
             return response.status(400).json({error: err.message});
         }
@@ -43,13 +43,14 @@ module.exports = {
         const user  = await User.findOne({ email }).select("+senha");
 
         if(!user){
-            return response.status(404).json({error: "User not found."});
+            return response.status(404).json({error: "User not found.", status: 404});
         }
         if(!await bcrypt.compare(senha, user.senha)){
-            return response.status(400).json({error: "Invalid password."})
+            return response.status(400).json({error: "Invalid password.", status: 400})
         }
         user.senha = undefined;
-        return response.status(200).send({});
+        
+        return response.status(200).json({message: "O pai tá on", status: 200});
 
         // console.log(request.userId);
         // response.send({user, token});

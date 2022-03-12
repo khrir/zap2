@@ -12,23 +12,40 @@
             <h2>Login</h2>
     
             <div class="input">
-                <input type="email" required maxlength="50" name="email">
+                <input type="email" id="Email" required maxlength="50" name="email">
                 <label for="">E-mail</label>
             </div><!--Email-->
     
             <div class="input">
-                <input type="password" class="Senha" required minlength="8" name="senha">
+                <input type="password" class="Senha" id="Senha" required minlength="8" name="senha">
                 <label for="Senha">Senha</label>
             </div><!--Senha-->
             
             <button type="submit" onclick="entrar(event)" id="btn">Entrar</button>
 
         </form>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
-            function entrar(e) {
+            function entrar (e) {
                 e.preventDefault();
-                window.location.assign('http://127.0.0.1:3001/chat');
+
+                let login = document.getElementById('Email').value;
+                let password = document.getElementById('Senha').value;
+                let pessoa = {email: login, senha: password}
+                console.log(pessoa)
+
+                axios.post('http://127.0.0.1:3001/login', pessoa)
+                    .then(function (response) {
+                        console.log(response.data);
+                        if(response.data.status === 200){
+                            // alert('O pai tá on');
+                            window.location.assign('/chat');
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                        alert('Ih, sujou');
+                    })
             }
         </script>
     </body>
