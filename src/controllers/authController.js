@@ -52,7 +52,5 @@ module.exports = {
         
         return response.status(200).json({message: "O pai tá on", status: 200});
 
-        // console.log(request.userId);
-        // response.send({user, token});
     }
 };

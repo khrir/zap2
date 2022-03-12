@@ -28,7 +28,7 @@ UserSchema.pre('save', async function(next) {
     this.senha = hash;
     
     next();
-})
+});
 
 const User = mongoose.model("User", UserSchema);
 module.exports = User;

@@ -1,7 +1,5 @@
 const express = require("express");
 const routes = express.Router();
-
-const middleware = require("../middleware/userMiddleware");
 const auth = require("../controllers/authController");
 
 // render index file
@@ -20,7 +18,6 @@ routes.get('/login', (req, res) => {
     return res.sendFile("/home/khrir/Documents/Repositorios/zap2/src/views/login.html");
 });
 routes.post('/login', auth.authenticate);
-
 
 // brincadeira
 routes.get("/chat", (req, res) => {
