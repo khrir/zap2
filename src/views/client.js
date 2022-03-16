@@ -1,4 +1,4 @@
-const socket = io.connect('https://3001-khrir-zap2-cg5841blzcv.ws-us34.gitpod.io/');
+const socket = io.connect('https://3001-khrir-zap2-t25a709j0d7.ws-us34.gitpod.io/');
 
 $("form#login").submit(function (e) {
     e.preventDefault();
