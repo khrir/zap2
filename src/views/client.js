@@ -1,4 +1,4 @@
-const socket = io.connect('127.0.0.1:3001');
+const socket = io.connect('https://3001-khrir-zap2-cg5841blzcv.ws-us34.gitpod.io/');
 
 $("form#login").submit(function (e) {
     e.preventDefault();

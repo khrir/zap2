@@ -40,7 +40,7 @@
                 let pessoa = {nome: name, email: login, senha: password}
                 console.log(pessoa)
 
-                axios.post('http://127.0.0.1:3001/register', pessoa)
+                axios.post('https://3001-khrir-zap2-cg5841blzcv.ws-us34.gitpod.io/register', pessoa)
                     .then(function (response) {
                         console.log(response.data);
                         if(response.data.status === 201){
